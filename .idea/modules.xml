@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/VisualInterfaceOfNodeMCU.iml" filepath="$PROJECT_DIR$/VisualInterfaceOfNodeMCU.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../firmata4j-master/firmata4j.iml" filepath="$PROJECT_DIR$/../firmata4j-master/firmata4j.iml" />
+    </modules>
+  </component>
+</project>
