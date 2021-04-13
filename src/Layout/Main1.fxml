@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Main1Controller">
+<AnchorPane fx:id="pane1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Main1Controller">
    <children>
       <BorderPane>
          <top>
@@ -19,11 +19,11 @@
                             <MenuItem fx:id="newFile" mnemonicParsing="false" text="New File" />
                           </items>
                         </Menu>
-                        <MenuItem mnemonicParsing="false" text="Open" />
-                        <MenuItem mnemonicParsing="false" text="Save" />
-                        <MenuItem mnemonicParsing="false" text="Save as" />
-                        <MenuItem mnemonicParsing="false" text="Export" />
-                        <MenuItem mnemonicParsing="false" text="Exit" />
+                        <MenuItem fx:id="open" mnemonicParsing="false" text="Open" />
+                        <MenuItem fx:id="save" mnemonicParsing="false" text="Save" />
+                        <MenuItem fx:id="saveas" mnemonicParsing="false" text="Save as" />
+                        <MenuItem fx:id="export" mnemonicParsing="false" text="Export" />
+                        <MenuItem fx:id="Exit" mnemonicParsing="false" text="Exit" />
                      </items>
                   </Menu>
                 <Menu mnemonicParsing="false" text="Examples">

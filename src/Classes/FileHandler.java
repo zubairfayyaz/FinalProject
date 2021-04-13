@@ -1,6 +1,8 @@
 package Classes;
 
+import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.File;
@@ -12,18 +14,6 @@ public class FileHandler {
     private String FileExtension;
     private String FileType;
     Window stage;
-    public FileHandler(String fileName, String fileLocation) {
-        FileName = fileName;
-        FileLocation = fileLocation;
-    }
-
-    public FileHandler(String fileName, String fileLocation, String fileExtension, String fileType) {
-        FileName = fileName;
-        FileLocation = fileLocation;
-        FileExtension = fileExtension;
-        FileType = fileType;
-    }
-
     //check to validate is file created already or not
     public void iscreated()
     {
@@ -99,7 +89,24 @@ public class FileHandler {
     {
 
     }
+    public void justCheck()
+    {
+        System.out.print("All done");
+    }
 
+    // cancel action to shutdown file and locations window
+    public void cancelFile(Button cancelBtn) {
+        Stage stage = (Stage) cancelBtn.getScene().getWindow();
+        stage.close();
+    }
+    //select file
+    public File selectFile()
+    {
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Working Directory");
+        return fileChooser.showOpenDialog(null);
+    }
 
 
 }

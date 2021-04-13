@@ -8,10 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import Classes.FileHandler;
-
 import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,24 +26,16 @@ public class FileNameLocationController implements Initializable{
     TextField FileName;
     @FXML
     Button fileChooser;
-
-
-    public void cancelFile() {
-        Stage stage = (Stage) cancelBtn.getScene().getWindow();
-        stage.close();
-    }
-
+    FileHandler fh = new FileHandler();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cancelBtn.setOnAction(actionEvent -> cancelFile());
         okBtn.setOnAction(new EventHandler<>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 String name = FileName.getText();
                 String location = FileLocation.getText();
-                FileHandler fh = new FileHandler(name, location);
                 fh.saveFile(location, name);
-                cancelFile();
+                fh.cancelFile(cancelBtn);
                 Parent root;
                 Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
                 try {
@@ -61,24 +51,23 @@ public class FileNameLocationController implements Initializable{
             }
 
 
-        });
+        });//ok btn handler end
 
         //File Chooser
         fileChooser.setOnAction(actionEvent -> {
-           File selectedFile  = selectFile();
+           File selectedFile  = fh.selectFile();
             FileLocation.setText(selectedFile.toString());
-        });
-
-    }
+        });//file chooser end
 
 
-    public File selectFile()
-    {
 
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select Working Directory");
-        return fileChooser.showOpenDialog(null);
-    }
+        cancelBtn.setOnAction(actionEvent ->
+                fh.cancelFile(cancelBtn));// cancel btn end
 
-}
+        //Exit Project
+
+
+    }//initialize method end
+
+}//FileNameLocationController end
 

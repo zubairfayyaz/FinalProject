@@ -1,5 +1,6 @@
 package Controllers;
 
+import Classes.FileHandler;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -8,8 +9,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,8 +20,24 @@ import java.util.ResourceBundle;
 public class Main1Controller implements Initializable{
     @FXML
     MenuItem newFile;
+    @FXML
+    MenuItem Exit;
+    @FXML
+    AnchorPane pane1;
+    @FXML
+    MenuItem save;
+    @FXML
+    MenuItem saveas;
+    @FXML
+    MenuItem export;
+    @FXML
+    MenuItem open;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        save.setDisable(true);
+        saveas.setDisable(true);
+        export.setDisable(true);
         newFile.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -36,5 +55,18 @@ public class Main1Controller implements Initializable{
                 }
             }
         });
+        //open Exsisting proejct
+        open.setOnAction(actionEvent -> {
+            FileHandler fh = new FileHandler();
+           File getFile =  fh.selectFile();
+            System.out.print(getFile.toString());
+        });
+
+        //for exit a window
+        Exit.setOnAction(actionEvent -> {
+         Stage stage = (Stage) pane1.getScene().getWindow();
+            stage.close();
+        });
+
     }
 }
