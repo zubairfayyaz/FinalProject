@@ -1,16 +1,21 @@
 package Controllers;
 
+import Classes.FileHandler;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,6 +24,8 @@ public class MainController implements Initializable {
     TreeView<String> MainTreeView;
     @FXML
     MenuItem newFile;
+    @FXML
+    BorderPane borderPane;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         TreeItem<String> rootNode = new TreeItem<>("Select Pins");
@@ -69,6 +76,15 @@ public class MainController implements Initializable {
         rootNode.getChildren().add(rootChildV);
         rootNode.getChildren().add(rootChildW);
         MainTreeView.setRoot(rootNode);
+    //set center file
+        FileHandler fh =  new FileHandler();
+
+    //borderPane.setCenter(new File("C/node"));
+
+
+
+
+
         newFile.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {

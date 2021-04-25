@@ -58,7 +58,7 @@ public class Main1Controller implements Initializable{
         //open Exsisting proejct
         open.setOnAction(actionEvent -> {
             FileHandler fh = new FileHandler();
-           File getFile =  fh.selectFile();
+            File getFile =  fh.selectFile();
             System.out.print(getFile.toString());
         });
 

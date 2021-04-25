@@ -27,6 +27,39 @@ public class FileNameLocationController implements Initializable{
     @FXML
     Button fileChooser;
     FileHandler fh = new FileHandler();
+
+    public TextField getFileLocation() {
+        return FileLocation;
+    }
+
+    public void setFileLocation(TextField fileLocation) {
+        FileLocation = fileLocation;
+    }
+
+    public TextField getFileName() {
+        return FileName;
+    }
+
+    public void setFileName(TextField fileName) {
+        FileName = fileName;
+    }
+
+    public Button getFileChooser() {
+        return fileChooser;
+    }
+
+    public void setFileChooser(Button fileChooser) {
+        this.fileChooser = fileChooser;
+    }
+
+    public FileHandler getFh() {
+        return fh;
+    }
+
+    public void setFh(FileHandler fh) {
+        this.fh = fh;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         okBtn.setOnAction(new EventHandler<>() {
@@ -36,6 +69,8 @@ public class FileNameLocationController implements Initializable{
                 String location = FileLocation.getText();
                 fh.saveFile(location, name);
                 fh.cancelFile(cancelBtn);
+                fh.setFileLocation(location);
+                fh.setFileName(name);
                 Parent root;
                 Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
                 try {
@@ -55,12 +90,9 @@ public class FileNameLocationController implements Initializable{
 
         //File Chooser
         fileChooser.setOnAction(actionEvent -> {
-           File selectedFile  = fh.selectFile();
-            FileLocation.setText(selectedFile.toString());
+            File selectedFile  = fh.selectFile();
+           FileLocation.setText(selectedFile.toString());
         });//file chooser end
-
-
-
         cancelBtn.setOnAction(actionEvent ->
                 fh.cancelFile(cancelBtn));// cancel btn end
 

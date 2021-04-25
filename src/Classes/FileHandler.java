@@ -13,11 +13,20 @@ public class FileHandler {
     private String FileLocation;
     private String FileExtension;
     private String FileType;
+    public File file;
     Window stage;
     //check to validate is file created already or not
     public void iscreated()
     {
 
+    }
+
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
     }
 
     public String getFileName() {
@@ -73,7 +82,7 @@ public class FileHandler {
             }
            path = "c:/NodeMCU";
         }
-        File file  = new File(path+"/"+fileName+".xml");
+        file  = new File(path+"/"+fileName+".xml");
         try {
             if(file.createNewFile())
             {
